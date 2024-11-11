@@ -24,7 +24,8 @@
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <!-- Ícono del menú hamburguesa -->
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul id="nav-links" class="nav-links">
         </nav>
     </header>
 
@@ -107,12 +108,7 @@
         </ul>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('show');
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 

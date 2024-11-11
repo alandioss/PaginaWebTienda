@@ -25,6 +25,13 @@ header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    /* Asegura que los elementos se acomoden mejor en pantallas pequeñas */
+}
+
+header nav img {
+    max-width: 100%;
+    /* Asegura que el logo no se desborde */
 }
 
 header nav ul {
@@ -32,15 +39,22 @@ header nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
+    /* Permite que los elementos se acomoden mejor */
+    justify-content: center;
+    width: 100%;
 }
 
 header nav ul li {
     margin: 0 15px;
+    padding: 5px;
 }
 
 header nav ul li a {
     text-decoration: none;
     color: #ffffff;
+    font-size: 1.2rem;
+    /* Tamaño de fuente adecuado */
 }
 
 header nav ul li a:hover {
@@ -244,10 +258,17 @@ footer ul li a:hover {
 
 /* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
-    .nav-links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
+    header nav ul {
+        flex-direction: column;
+        /* Cambia la dirección de los elementos del menú */
+        align-items: center;
+        /* Centra los elementos del menú */
+        width: 100%;
+        /* Asegura que el menú ocupe todo el ancho */
+    }
+
+    header nav ul li {
+        margin: 10px 0;
     }
 
     .productos {
@@ -257,6 +278,7 @@ footer ul li a:hover {
 
     .productos article {
         width: 90%;
+        /* Asegura que los artículos se ajusten al 90% del ancho de la pantalla */
     }
 
     .app-links {
@@ -266,5 +288,11 @@ footer ul li a:hover {
 
     .app-links button {
         margin-bottom: 10px;
+    }
+
+    /* Añadimos reglas para evitar el desbordamiento */
+    body {
+        overflow-x: hidden;
+        /* Evita el desbordamiento horizontal */
     }
 }

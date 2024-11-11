@@ -13,7 +13,6 @@
 
 <body>
 
-
     <header>
         <nav>
             <img src="imagenes/store-icon-flat-store-5eb271.jpg" alt="ShopPlus Logo" width="100">
@@ -33,49 +32,52 @@
             <p>Encuentra todo lo que necesitas al mejor precio. Envíos a todo el país y pagos seguros.</p>
             <a href="#productos" class="btn">Explorar Productos</a>
             <div class="app-links">
-                <a href="#">
-                    <button>Descarga nuestra App en App Store</button>
-                </a>
-                <a href="#">
-                    <button>Disponible en Google Play</button>
-                </a>
+                <a href="#"><button>Descarga nuestra App en App Store</button></a>
+                <a href="#"><button>Disponible en Google Play</button></a>
             </div>
         </section>
 
+        <!-- Sección Productos (Flexbox) -->
         <section id="productos" class="productos">
-            <article>
-                <img src="imagenes/shopping.jpg" alt="Producto 1" width="200">
-                <h2>Smartphone XYZ</h2>
-                <p>Potente, compacto y con una cámara de última generación. Ideal para capturar tus momentos especiales.
-                </p>
-                <p><strong>Precio: $599</strong></p>
-                <a href="#" class="btn">Añadir al Carrito</a>
-            </article>
-
-            <article>
-                <img src="imagenes/auris.jpg" alt="Producto 2" width="200">
-                <h2>Auriculares Bluetooth</h2>
-                <p>Sonido envolvente y batería de larga duración. Perfectos para llevar tu música a donde quieras.</p>
-                <p><strong>Precio: $99</strong></p>
-                <a href="#" class="btn">Añadir al Carrito</a>
-            </article>
-
-            <article>
-                <img src="imagenes/reloj.jpg" alt="Producto 3" width="200">
-                <h2>Reloj Inteligente</h2>
-                <p>Monitorea tu actividad física y mantente conectado en todo momento.</p>
-                <p><strong>Precio: $199</strong></p>
-                <a href="#" class="btn">Añadir al Carrito</a>
-            </article>
+            <h2>Nuestros Productos</h2>
+            <div class="producto-cards">
+                <article class="card">
+                    <img src="imagenes/shopping.jpg" alt="Producto 1" width="200">
+                    <h3>Smartphone XYZ</h3>
+                    <p>Potente, compacto y con una cámara de última generación. Ideal para capturar tus momentos
+                        especiales.</p>
+                    <p><strong>Precio: $599</strong></p>
+                    <a href="#" class="btn">Añadir al Carrito</a>
+                </article>
+                <article class="card">
+                    <img src="imagenes/auris.jpg" alt="Producto 2" width="200">
+                    <h3>Auriculares Bluetooth</h3>
+                    <p>Sonido envolvente y batería de larga duración. Perfectos para llevar tu música a donde quieras.
+                    </p>
+                    <p><strong>Precio: $99</strong></p>
+                    <a href="#" class="btn">Añadir al Carrito</a>
+                </article>
+                <article class="card">
+                    <img src="imagenes/reloj.jpg" alt="Producto 3" width="200">
+                    <h3>Reloj Inteligente</h3>
+                    <p>Monitorea tu actividad física y mantente conectado en todo momento.</p>
+                    <p><strong>Precio: $199</strong></p>
+                    <a href="#" class="btn">Añadir al Carrito</a>
+                </article>
+            </div>
         </section>
 
+        <!-- Sección Reseñas (Grid) -->
         <section id="reseñas" class="reseñas">
             <h4>Opiniones de Nuestros Clientes</h4>
             <h2>¡Lo que Dicen de Nosotros!</h2>
-            <p>“Increíble servicio, los productos llegaron a tiempo y en excelente estado. ¡Volveré a comprar sin duda!”
-                - Ana R.</p>
-            <p>“Gran variedad y precios competitivos. Me encantaron los productos.” - Carlos G.</p>
-            <button>Ver Más Reseñas</button>
+            <div class="reseña-cards">
+                <div class="reseña">“Increíble servicio, los productos llegaron a tiempo y en excelente estado. ¡Volveré
+                    a comprar sin duda!” - Ana R.</div>
+                <div class="reseña">“Gran variedad y precios competitivos. Me encantaron los productos.” - Carlos G.
+                </div>
+                <button>Ver Más Reseñas</button>
+            </div>
         </section>
 
         <section id="contacto" class="contact-form">

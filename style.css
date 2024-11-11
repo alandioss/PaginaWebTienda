@@ -1,5 +1,4 @@
-/* Código CSS para el diseño responsivo y menú hamburguesa */
-
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
     color: #333;
@@ -33,7 +32,10 @@ header nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 20px;
+}
+
+header nav ul li {
+    margin: 0 15px;
 }
 
 header nav ul li a {
@@ -45,51 +47,9 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Menú hamburguesa en pantallas pequeñas */
-.hamburger {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: #fff;
-    padding: 10px;
+main {
+    padding: 20px;
 }
-
-.nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-        /* Oculta el menú en pantallas pequeñas */
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        background-color: #333;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-    }
-
-    .nav-links.show {
-        display: flex;
-        /* Muestra el menú cuando se activa la clase 'show' */
-    }
-
-    header nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* Estilos generales para la página */
 
 .introduccion {
     text-align: center;
@@ -141,7 +101,6 @@ header nav ul li a:hover {
     background-color: #2980b9;
 }
 
-/* Estilos de productos */
 .productos {
     display: flex;
     flex-wrap: wrap;
@@ -161,22 +120,35 @@ header nav ul li a:hover {
 }
 
 .productos article:hover {
-    transform: translateY(-10px);
+    transform: scale(1.05);
 }
 
 .productos img {
-    width: 100%;
-    border-radius: 10px;
-    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.productos h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.productos p {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
 }
 
 .productos .btn {
     background-color: #2ecc71;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
@@ -184,115 +156,115 @@ header nav ul li a:hover {
     background-color: #27ae60;
 }
 
-/* Reseñas */
 .reseñas {
-    background-color: #f9f9f9;
-    padding: 20px;
-    text-align: center;
     margin-top: 20px;
-    border-radius: 10px;
-}
-
-.reseñas h4 {
-    font-size: 1.5em;
-}
-
-.reseñas h2 {
-    margin-top: 10px;
-}
-
-.reseñas p {
-    font-size: 1.1em;
-    margin-top: 10px;
-}
-
-.reseñas button {
-    background-color: #f39c12;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.reseñas button:hover {
-    background-color: #e67e22;
-}
-
-/* Formulario de contacto */
-.contact-form {
-    background-color: #fff;
+    text-align: center;
+    background-color: #ffe0b2;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 
-.contact-form h2 {
+.reseñas h4 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.reseñas h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.reseñas p {
+    color: #555;
+    margin: 10px 0;
+}
+
+.contact-form {
+    margin-top: 30px;
     text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form label {
-    display: block;
-    margin: 10px 0 5px;
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
+    max-width: 400px;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin: 10px 0;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .contact-form button {
-    background-color: #3498db;
-    color: white;
     padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
-    background-color: #2980b9;
-}
-
-/* Pie de página */
 footer {
     background-color: #333;
-    color: white;
-    padding: 20px;
+    color: #ffffff;
     text-align: center;
-    margin-top: 20px;
-}
-
-footer .footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    padding: 20px;
 }
 
 footer ul {
     list-style: none;
     padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
 }
 
 footer ul li {
-    display: inline;
     margin: 0 10px;
 }
 
 footer ul li a {
+    color: #ffffff;
     text-decoration: none;
-    color: white;
 }
 
 footer ul li a:hover {
     text-decoration: underline;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .productos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productos article {
+        width: 90%;
+    }
+
+    .app-links {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .app-links button {
+        margin-bottom: 10px;
+    }
 }

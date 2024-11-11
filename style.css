@@ -33,6 +33,22 @@ header nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 15px;
+}
+
+/* Estilo de menú hamburguesa */
+.menu-icon {
+    display: none;
+    /* Oculto por defecto */
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 /* Sección Productos (Flexbox) */
@@ -91,22 +107,56 @@ header nav ul {
     }
 }
 
+/* Estilo de la barra de navegación en pantalla grande */
 header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     gap: 20px;
-    /* Añade un espacio de 20px entre cada elemento */
 }
 
 header nav ul li a {
     text-decoration: none;
     color: #ffffff;
     padding: 10px 15px;
-    /* Añade espacio alrededor del texto en cada enlace */
 }
 
-header nav ul li a:hover {
-    text-decoration: underline;
+/* Estilo de menú hamburguesa */
+.menu-icon {
+    display: none;
+    /* Oculto por defecto */
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Oculta el menú en pantallas pequeñas */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* Ajusta según la altura de tu header */
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    .menu-icon {
+        display: block;
+        /* Muestra el ícono en móviles */
+    }
+
+    .nav-links.show {
+        display: flex;
+        /* Muestra el menú cuando se activa */
+    }
 }

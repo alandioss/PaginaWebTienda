@@ -1,9 +1,7 @@
-/* Estilos generales */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    /* Asegura que los padding y border no afecten el tamaño de los elementos */
 }
 
 body {
@@ -33,12 +31,10 @@ header nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    /* Asegura que los elementos se acomoden mejor en pantallas pequeñas */
 }
 
 header nav img {
     max-width: 100%;
-    /* Asegura que el logo no se desborde */
 }
 
 header nav ul {
@@ -47,7 +43,6 @@ header nav ul {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    /* Permite que los elementos se acomoden mejor */
     justify-content: center;
     width: 100%;
 }
@@ -61,7 +56,6 @@ header nav ul li a {
     text-decoration: none;
     color: #ffffff;
     font-size: 1.2rem;
-    /* Tamaño de fuente adecuado */
 }
 
 header nav ul li a:hover {
@@ -263,22 +257,16 @@ footer ul li a:hover {
     text-decoration: underline;
 }
 
-/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
-        /* Evita el desbordamiento horizontal */
     }
 
     header nav ul {
         flex-direction: column;
-        /* Cambia la dirección de los elementos del menú */
         align-items: center;
-        /* Centra los elementos del menú */
         width: 100%;
-        /* Asegura que el menú ocupe todo el ancho */
         padding: 0;
-        /* Elimina cualquier padding que pueda causar desbordamiento */
     }
 
     header nav ul li {
@@ -293,7 +281,6 @@ footer ul li a:hover {
 
     .productos article {
         width: 90%;
-        /* Asegura que los artículos se ajusten al 90% del ancho de la pantalla */
     }
 
     .app-links {

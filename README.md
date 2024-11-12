@@ -1,4 +1,4 @@
-ShopPlus es una tienda en línea diseñada para ofrecer a los usuarios una experiencia de compra rápida, fácil y segura.
+ShopZone es una tienda en línea diseñada para ofrecer a los usuarios una experiencia de compra rápida, fácil y segura.
 Contiene: Página de Inicio
           Sección de Productos
           Ofertas

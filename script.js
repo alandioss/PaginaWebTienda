@@ -157,3 +157,139 @@ document.addEventListener("DOMContentLoaded", () => {
     // Llamar a la función para mostrar productos
     mostrarProductos();
 });
+
+// script.js
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Función para obtener datos de la API pública
+    const obtenerDatosAPI = async () => {
+        const url = "https://fakestoreapi.com/products"; // URL de la API pública
+        try {
+            const respuesta = await fetch(url);
+            if (!respuesta.ok) {
+                throw new Error(`Error: ${respuesta.status} - ${respuesta.statusText}`);
+            }
+            const productos = await respuesta.json();
+            mostrarProductosAPI(productos);
+        } catch (error) {
+            console.error("Hubo un problema al obtener los datos de la API:", error);
+            document.querySelector(".productos").innerHTML = `
+                <p class="error">No se pudieron cargar los productos. Intenta nuevamente más tarde.</p>
+            `;
+        }
+    };
+
+    // Función para mostrar los productos obtenidos de la API
+    const mostrarProductosAPI = (productos) => {
+        const productosContainer = document.querySelector(".productos");
+        productosContainer.innerHTML = ""; // Limpiar contenido inicial
+
+        productos.forEach((producto) => {
+            const productoHTML = `
+                <article class="producto-card">
+                    <img src="${producto.image}" alt="${producto.title}" class="producto-img" />
+                    <h2 class="producto-nombre">${producto.title}</h2>
+                    <p class="producto-precio">Precio: $${producto.price}</p>
+                    <p class="producto-descripcion">${producto.description.substring(0, 100)}...</p>
+                    <button class="btn btn-comprar">Comprar</button>
+                </article>
+            `;
+            productosContainer.innerHTML += productoHTML;
+        });
+    };
+
+    // Llamar a la función para obtener los datos de la API
+    obtenerDatosAPI();
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const url = "https://fakestoreapi.com/products";
+    const productosContainer = document.getElementById("productos-container");
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const productos = await response.json();
+
+        productos.forEach(producto => {
+            // Crear la estructura de la tarjeta
+            const productoHTML = `
+                <div class="producto">
+                    <img src="${producto.image}" alt="${producto.title}">
+                    <h2>${producto.title}</h2>
+                    <p>Precio: $${producto.price}</p>
+                    <a href="#" class="btn">Añadir al carrito</a>
+                </div>
+            `;
+
+            // Añadir la tarjeta al contenedor
+            productosContainer.innerHTML += productoHTML;
+        });
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+    }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const url = "https://fakestoreapi.com/products";
+    const productosContainer = document.getElementById("productos-container");
+    const carritoCount = document.getElementById("carrito-count");
+
+    // Cargar el carrito desde localStorage
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    // Actualiza el contador del carrito
+    const actualizarCarrito = () => {
+        carritoCount.textContent = carrito.length;
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    };
+
+    // Función para añadir un producto al carrito
+    const añadirAlCarrito = (producto) => {
+        carrito.push(producto);
+        alert(`Producto añadido: ${producto.title}`);
+        actualizarCarrito();
+    };
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const productos = await response.json();
+
+        productos.forEach(producto => {
+            // Crear la estructura de la tarjeta
+            const productoHTML = `
+                <div class="producto">
+                    <img src="${producto.image}" alt="${producto.title}">
+                    <h2>${producto.title}</h2>
+                    <p>Precio: $${producto.price}</p>
+                    <button class="btn" data-id="${producto.id}">Añadir al carrito</button>
+                </div>
+            `;
+
+            // Añadir la tarjeta al contenedor
+            productosContainer.innerHTML += productoHTML;
+        });
+
+        // Añadir eventos a los botones "Añadir al carrito"
+        document.querySelectorAll(".btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const id = button.getAttribute("data-id");
+                const producto = productos.find(p => p.id == id);
+                añadirAlCarrito(producto);
+            });
+        });
+
+        // Actualiza el contador del carrito al cargar
+        actualizarCarrito();
+    } catch (error) {
+        console.error("Error al obtener los datos:", error);
+    }
+});
+

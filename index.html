@@ -16,6 +16,10 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #333, #555);">
+            <h1>Mi Tienda</h1>
+            <div id="carrito-info">
+                <span>Carrito:</span> <span id="carrito-count">0</span> productos
+            </div>
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="imagenes/store-icon-flat-store-5eb271.jpg" alt="ShopPlus Logo" width="50">
@@ -64,7 +68,15 @@
         </section>
 
         <section id="productos" class="productos">
-
+            <h2>Nuestros Productos</h2>
+            <div id="productos-container">
+                <div class="producto">
+                    <img src="url_imagen.jpg" alt="Producto 1">
+                    <h2>Producto 1</h2>
+                    <p>Precio: $100</p>
+                    <button class="btn-add-carrito" data-id="1">Añadir al carrito</button>
+                </div>
+            </div>
         </section>
 
         <section id="reseñas" class="reseñas">

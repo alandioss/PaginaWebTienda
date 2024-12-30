@@ -136,3 +136,28 @@ footer {
     border-top: 3px solid #444;
     /* Borde superior decorativo */
 }
+
+.ocultar {
+    display: none;
+}
+
+.descripcion {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.btn-descripcion {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-descripcion:hover {
+    background-color: #2980b9;
+}

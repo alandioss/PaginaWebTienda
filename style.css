@@ -323,3 +323,12 @@ footer ul li a:hover {
         margin-bottom: 10px;
     }
 }
+
+.descripcion {
+    margin-top: 10px;
+    color: #666;
+}
+
+.ocultar {
+    display: none;
+}

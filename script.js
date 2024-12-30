@@ -347,3 +347,68 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicializar contador del carrito
     actualizarContadorCarrito();
 });
+
+function mostrarCarrito() {
+    const carritoContainer = document.getElementById('carrito-container');
+    carritoContainer.innerHTML = ''; // Limpia el contenido anterior
+
+    carrito.forEach(producto => {
+        const productoHTML = `
+            <div class="producto">
+                <h3>${producto.nombre}</h3>
+                <p>Precio: $${producto.precio}</p>
+                <label>Cantidad:</label>
+                <input type="number" min="1" value="${producto.cantidad}" data-id="${producto.id}" class="cantidad-producto">
+                <p>Total: $${producto.precio * producto.cantidad}</p>
+                <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
+            </div>
+        `;
+        carritoContainer.innerHTML += productoHTML;
+    });
+
+    // Eventos para cambiar la cantidad
+    const inputsCantidad = document.querySelectorAll('.cantidad-producto');
+    inputsCantidad.forEach(input => {
+        input.addEventListener('change', (e) => {
+            const idProducto = e.target.dataset.id;
+            const nuevaCantidad = parseInt(e.target.value);
+            actualizarCantidad(idProducto, nuevaCantidad);
+        });
+    });
+
+    // Eventos para eliminar productos
+    const botonesEliminar = document.querySelectorAll('.btn-eliminar');
+    botonesEliminar.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const idProducto = e.target.dataset.id;
+            eliminarDelCarrito(idProducto);
+        });
+    });
+}
+
+function actualizarCantidad(idProducto, nuevaCantidad) {
+    const producto = carrito.find(p => p.id === idProducto);
+    if (producto) {
+        producto.cantidad = nuevaCantidad; // Actualiza la cantidad
+        localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito actualizado
+        mostrarCarrito(); // Actualiza el DOM
+    }
+}
+
+function eliminarDelCarrito(idProducto) {
+    carrito = carrito.filter(producto => producto.id !== idProducto); // Filtra el producto
+    localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito actualizado
+    mostrarCarrito(); // Actualiza el DOM
+}
+
+function agregarAlCarrito(producto) {
+    const productoExistente = carrito.find(p => p.id === producto.id);
+    if (productoExistente) {
+        productoExistente.cantidad += 1; // Incrementa la cantidad
+    } else {
+        producto.cantidad = 1; // Establece la cantidad inicial
+        carrito.push(producto); // Agrega el producto al carrito
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito
+    mostrarCarrito(); // Actualiza el DOM
+}

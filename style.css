@@ -15,7 +15,7 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -24,8 +24,6 @@ header {
     color: #ffffff;
     padding: 20px;
     text-align: center;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #444;
 }
 
 header nav {
@@ -33,7 +31,10 @@ header nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 10px;
+}
+
+header nav img {
+    max-width: 100%;
 }
 
 header nav ul {
@@ -43,11 +44,22 @@ header nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    width: 100%;
 }
 
 header nav ul li {
-    padding: 5px 10px;
+    margin: 0 15px;
+    padding: 5px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
 }
 
 main {
@@ -57,92 +69,97 @@ main {
 .introduccion {
     text-align: center;
     background-color: #e0f7fa;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    border: 2px solid #b2ebf2;
+}
+
+.introduccion h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.introduccion .btn {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.introduccion .btn:hover {
+    background-color: #2980b9;
+}
+
+.introduccion .app-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.app-links button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.app-links button:hover {
+    background-color: #2980b9;
 }
 
 .productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    /* Ajuste con grid */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     margin-top: 20px;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
 }
 
 .productos article {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
-    margin: 10px;
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     text-align: center;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* Asegura que la descripción y el botón no se sobrepongan */
-}
-
-.producto-img {
-    width: 100%;
-    height: 200px;
-    border-radius: 8px;
-    margin-bottom: 15px;
 }
 
 .productos article:hover {
     transform: scale(1.05);
 }
 
-.reseñas {
-    margin-top: 20px;
-    text-align: center;
-    background-color: #ffe0b2;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 2px solid #ffcc80;
+.productos img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-.contact-form {
-    margin-top: 30px;
-    text-align: center;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
+.productos h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
 }
 
-footer {
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    border-top: 3px solid #444;
-}
-
-.ocultar {
-    display: none;
-}
-
-.descripcion {
-    margin-top: 10px;
+.productos p {
+    font-size: 1em;
     color: #666;
-    font-size: 0.9em;
+    margin: 10px 0;
 }
 
-.btn-descripcion {
-    background-color: #3498db;
+.productos .btn {
+    background-color: #2ecc71;
     color: #ffffff;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -150,6 +167,128 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.btn-descripcion:hover {
-    background-color: #2980b9;
+.productos .btn:hover {
+    background-color: #27ae60;
+}
+
+.reseñas {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #ffe0b2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reseñas h4 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.reseñas h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.reseñas p {
+    color: #555;
+    margin: 10px 0;
+}
+
+.contact-form {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .productos {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .productos article {
+        width: 90%;
+    }
+
+    .app-links {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .app-links button {
+        margin-bottom: 10px;
+    }
 }

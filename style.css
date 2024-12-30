@@ -103,6 +103,23 @@ main {
     /* Borde sutil */
 }
 
+/* Estilo para las imágenes de los productos */
+.producto-img {
+    width: 100%;
+    /* Las imágenes ocupan todo el ancho de su contenedor */
+    height: auto;
+    /* Mantiene la proporción de las imágenes */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    /* Espacio debajo de las imágenes */
+}
+
+/* Efecto al pasar el ratón por la tarjeta del producto */
+.productos article:hover {
+    transform: scale(1.05);
+    /* Agranda ligeramente la tarjeta */
+}
+
 .reseñas {
     margin-top: 20px;
     text-align: center;

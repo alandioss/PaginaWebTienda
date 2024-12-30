@@ -293,3 +293,57 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const productosContainer = document.getElementById("productos-container");
+
+    // Actualizar el contador del carrito
+    const actualizarContadorCarrito = () => {
+        const contador = document.getElementById("carrito-count");
+        if (contador) {
+            contador.textContent = carrito.length;
+        }
+    };
+
+    // Añadir producto al carrito
+    const añadirAlCarrito = (producto) => {
+        carrito.push(producto);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        alert(`Producto "${producto.nombre}" añadido al carrito`);
+        actualizarContadorCarrito();
+    };
+
+    // Lista de productos
+    const productos = [
+        { id: 1, nombre: "Producto 1", precio: 100, imagen: "url_imagen1.jpg" },
+        { id: 2, nombre: "Producto 2", precio: 200, imagen: "url_imagen2.jpg" },
+        { id: 3, nombre: "Producto 3", precio: 300, imagen: "url_imagen3.jpg" },
+    ];
+
+    // Renderizar productos
+    productos.forEach((producto) => {
+        const productoHTML = `
+            <div class="producto">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <h2>${producto.nombre}</h2>
+                <p>Precio: $${producto.precio}</p>
+                <button class="btn-add-carrito" data-id="${producto.id}">Comprar</button>
+            </div>
+        `;
+        productosContainer.innerHTML += productoHTML;
+    });
+
+    // Asignar eventos a los botones
+    productosContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-add-carrito")) {
+            const id = e.target.getAttribute("data-id");
+            const producto = productos.find((prod) => prod.id == id);
+            if (producto) {
+                añadirAlCarrito(producto);
+            }
+        }
+    });
+
+    // Inicializar contador del carrito
+    actualizarContadorCarrito();
+});

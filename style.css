@@ -332,3 +332,41 @@ footer ul li a:hover {
 .ocultar {
     display: none;
 }
+
+.producto-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.producto-img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.producto-nombre {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.producto-precio {
+    font-size: 1.2em;
+    color: #2ecc71;
+    margin-bottom: 10px;
+}
+
+.producto-descripcion {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.ocultar {
+    display: none;
+}

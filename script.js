@@ -51,16 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
             nombre: "Smartphone XYZ",
             precio: "$599",
             descripcion: "Potente, compacto y con una cámara de última generación.",
+            imagen: "imagenes/shopping.jpg",
         },
         {
             nombre: "Auriculares Bluetooth",
             precio: "$99",
             descripcion: "Sonido envolvente y batería de larga duración.",
+            imagen: "imagenes/auris.jpg",
         },
         {
             nombre: "Reloj Inteligente",
             precio: "$199",
             descripcion: "Monitorea tu actividad física y mantente conectado.",
+            imagen: "imagenes/reloj.jpg",
         },
     ];
 

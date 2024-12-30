@@ -1,414 +1,135 @@
 // script.js
 
-// Mensaje para verificar que el archivo está vinculado correctamente
-console.log("El archivo script.js está correctamente enlazado y ejecutándose.");
-
-// Ejemplo: Agregar funcionalidad a un botón
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".btn");
-    buttons.forEach(button => {
-        button.addEventListener("click", () => {
-            alert("Has hecho clic en un botón.");
-        });
-    });
-});
-
-// Función para verificar si todos los campos del formulario están completos
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector(".contact-form form");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Evitar que el formulario se envíe para probar la funcionalidad
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (email === "" || message === "") {
-            console.log("Por favor, completa todos los campos del formulario.");
-        } else {
-            console.log("Formulario completado correctamente.");
-            console.log(`Email: ${email}`);
-            console.log(`Mensaje: ${message}`);
-        }
-    });
-
-    // Ciclo para generar dinámicamente la lista de productos
-    const productos = [
-        { nombre: "Smartphone XYZ", precio: "$599" },
-        { nombre: "Auriculares Bluetooth", precio: "$99" },
-        { nombre: "Reloj Inteligente", precio: "$199" },
-    ];
-
-    console.log("Lista de productos disponibles:");
-    productos.forEach((producto, index) => {
-        console.log(`${index + 1}. ${producto.nombre} - Precio: ${producto.precio}`);
-    });
-});
-
-// script.js
+// Verificar que el archivo está enlazado correctamente
+console.log("El archivo script.js está correctamente enlazado.");
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Productos para generar dinámicamente
-    const productos = [
-        {
-            nombre: "Smartphone XYZ",
-            precio: "$599",
-            descripcion: "Potente, compacto y con una cámara de última generación.",
-        },
-        {
-            nombre: "Auriculares Bluetooth",
-            precio: "$99",
-            descripcion: "Sonido envolvente y batería de larga duración.",
-        },
-        {
-            nombre: "Reloj Inteligente",
-            precio: "$199",
-            descripcion: "Monitorea tu actividad física y mantente conectado.",
-        },
-    ];
-
-    // Generar listado de productos en el HTML
-    const productosContainer = document.querySelector(".productos");
-    productosContainer.innerHTML = ""; // Limpiar contenido inicial
-
-    productos.forEach((producto) => {
-        const productoCard = document.createElement("article");
-        productoCard.classList.add("producto-card");
-        productoCard.innerHTML = `
-            <h2>${producto.nombre}</h2>
-            <p class="precio">${producto.precio}</p>
-            <button class="btn btn-descripcion">Ver Descripción</button>
-            <p class="descripcion ocultar">${producto.descripcion}</p>
-        `;
-        productosContainer.appendChild(productoCard);
-    });
-
-    // Evento click para mostrar la descripción del producto seleccionado
-    const botonesDescripcion = document.querySelectorAll(".btn-descripcion");
-    botonesDescripcion.forEach((boton) => {
-        boton.addEventListener("click", (event) => {
-            const descripcion = event.target.nextElementSibling;
-            if (descripcion.classList.contains("ocultar")) {
-                descripcion.classList.remove("ocultar");
-                boton.textContent = "Ocultar Descripción";
-            } else {
-                descripcion.classList.add("ocultar");
-                boton.textContent = "Ver Descripción";
-            }
-        });
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Crear un array de productos
-    const productos = [
-        {
-            nombre: "Smartphone XYZ",
-            precio: "$599",
-            descripcion: "Potente, compacto y con una cámara de última generación.",
-            imagen: "imagenes/shopping.jpg",
-        },
-        {
-            nombre: "Auriculares Bluetooth",
-            precio: "$99",
-            descripcion: "Sonido envolvente y batería de larga duración.",
-            imagen: "imagenes/auris.jpg",
-        },
-        {
-            nombre: "Reloj Inteligente",
-            precio: "$199",
-            descripcion: "Monitorea tu actividad física y mantente conectado.",
-            imagen: "imagenes/reloj.jpg",
-        },
-    ];
-
-    // Función para mostrar productos en la página
-    const mostrarProductos = () => {
-        const productosContainer = document.querySelector(".productos");
-        productosContainer.innerHTML = ""; // Limpiar contenido inicial
-
-        productos.forEach((producto) => {
-            const productoHTML = `
-                <article class="producto-card">
-                    <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-img" />
-                    <h2 class="producto-nombre">${producto.nombre}</h2>
-                    <p class="producto-precio">${producto.precio}</p>
-                    <button class="btn btn-descripcion">Ver Descripción</button>
-                    <p class="producto-descripcion ocultar">${producto.descripcion}</p>
-                </article>
-            `;
-            productosContainer.innerHTML += productoHTML;
-        });
-
-        // Agregar evento click para cada botón de descripción
-        const botonesDescripcion = document.querySelectorAll(".btn-descripcion");
-        botonesDescripcion.forEach((boton, index) => {
-            boton.addEventListener("click", () => {
-                const descripcion = boton.nextElementSibling;
-                if (descripcion.classList.contains("ocultar")) {
-                    descripcion.classList.remove("ocultar");
-                    boton.textContent = "Ocultar Descripción";
-                } else {
-                    descripcion.classList.add("ocultar");
-                    boton.textContent = "Ver Descripción";
-                }
-            });
-        });
-    };
-
-    // Llamar a la función para mostrar productos
-    mostrarProductos();
-});
-
-// script.js
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Función para obtener datos de la API pública
-    const obtenerDatosAPI = async () => {
-        const url = "https://fakestoreapi.com/products"; // URL de la API pública
-        try {
-            const respuesta = await fetch(url);
-            if (!respuesta.ok) {
-                throw new Error(`Error: ${respuesta.status} - ${respuesta.statusText}`);
-            }
-            const productos = await respuesta.json();
-            mostrarProductosAPI(productos);
-        } catch (error) {
-            console.error("Hubo un problema al obtener los datos de la API:", error);
-            document.querySelector(".productos").innerHTML = `
-                <p class="error">No se pudieron cargar los productos. Intenta nuevamente más tarde.</p>
-            `;
-        }
-    };
-
-    // Función para mostrar los productos obtenidos de la API
-    const mostrarProductosAPI = (productos) => {
-        const productosContainer = document.querySelector(".productos");
-        productosContainer.innerHTML = ""; // Limpiar contenido inicial
-
-        productos.forEach((producto) => {
-            const productoHTML = `
-                <article class="producto-card">
-                    <img src="${producto.image}" alt="${producto.title}" class="producto-img" />
-                    <h2 class="producto-nombre">${producto.title}</h2>
-                    <p class="producto-precio">Precio: $${producto.price}</p>
-                    <p class="producto-descripcion">${producto.description.substring(0, 100)}...</p>
-                    <button class="btn btn-comprar">Comprar</button>
-                </article>
-            `;
-            productosContainer.innerHTML += productoHTML;
-        });
-    };
-
-    // Llamar a la función para obtener los datos de la API
-    obtenerDatosAPI();
-});
-
-document.addEventListener("DOMContentLoaded", async () => {
-    const url = "https://fakestoreapi.com/products";
-    const productosContainer = document.getElementById("productos-container");
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        const productos = await response.json();
-
-        productos.forEach(producto => {
-            // Crear la estructura de la tarjeta
-            const productoHTML = `
-                <div class="producto">
-                    <img src="${producto.image}" alt="${producto.title}">
-                    <h2>${producto.title}</h2>
-                    <p>Precio: $${producto.price}</p>
-                    <a href="#" class="btn">Añadir al carrito</a>
-                </div>
-            `;
-
-            // Añadir la tarjeta al contenedor
-            productosContainer.innerHTML += productoHTML;
-        });
-    } catch (error) {
-        console.error("Error al obtener los datos:", error);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", async () => {
-    const url = "https://fakestoreapi.com/products";
     const productosContainer = document.getElementById("productos-container");
     const carritoCount = document.getElementById("carrito-count");
 
     // Cargar el carrito desde localStorage
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
     // Actualiza el contador del carrito
     const actualizarCarrito = () => {
-        carritoCount.textContent = carrito.length;
+        carritoCount.textContent = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
         localStorage.setItem("carrito", JSON.stringify(carrito));
     };
 
     // Función para añadir un producto al carrito
     const añadirAlCarrito = (producto) => {
-        carrito.push(producto);
-        alert(`Producto añadido: ${producto.title}`);
+        const productoExistente = carrito.find(p => p.id === producto.id);
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({ ...producto, cantidad: 1 });
+        }
+        alert(`Producto añadido: ${producto.nombre}`);
         actualizarCarrito();
     };
 
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        const productos = await response.json();
+    // Función para mostrar productos en cards usando Flexbox
+    const mostrarProductos = (productos) => {
+        productosContainer.innerHTML = ""; // Limpiar el contenedor
 
         productos.forEach(producto => {
-            // Crear la estructura de la tarjeta
+            // Generación de card para cada producto
             const productoHTML = `
-                <div class="producto">
-                    <img src="${producto.image}" alt="${producto.title}">
-                    <h2>${producto.title}</h2>
-                    <p>Precio: $${producto.price}</p>
+                <div class="producto-card">
+                    <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-img">
+                    <h2>${producto.nombre}</h2>
+                    <p>Precio: $${producto.precio}</p>
                     <button class="btn" data-id="${producto.id}">Añadir al carrito</button>
                 </div>
             `;
-
-            // Añadir la tarjeta al contenedor
             productosContainer.innerHTML += productoHTML;
         });
 
-        // Añadir eventos a los botones "Añadir al carrito"
+        // Agregar eventos a los botones "Añadir al carrito"
         document.querySelectorAll(".btn").forEach(button => {
             button.addEventListener("click", () => {
-                const id = button.getAttribute("data-id");
-                const producto = productos.find(p => p.id == id);
-                añadirAlCarrito(producto);
+                const id = parseInt(button.getAttribute("data-id"));
+                const producto = productos.find(p => p.id === id);
+                if (producto) añadirAlCarrito(producto);
+            });
+        });
+    };
+
+    // Obtener productos desde una API pública usando fetch
+    fetch("https://fakestoreapi.com/products") // Cambia esta URL por la de la API que necesites
+        .then(response => response.json()) // Procesar la respuesta JSON
+        .then(data => {
+            // Aquí procesamos los datos de la API
+            const productos = data.map(producto => ({
+                id: producto.id,
+                nombre: producto.title,
+                precio: producto.price,
+                imagen: producto.image,
+            }));
+            // Mostrar los productos en cards
+            mostrarProductos(productos);
+        })
+        .catch(error => {
+            console.error("Error al obtener los productos:", error);
+        });
+
+    // Inicializar contador del carrito
+    actualizarCarrito();
+
+    // Mostrar el carrito
+    const mostrarCarrito = () => {
+        const carritoContainer = document.getElementById("carrito-container");
+        carritoContainer.innerHTML = "";
+
+        carrito.forEach(producto => {
+            const productoHTML = `
+                <div class="producto">
+                    <h3>${producto.nombre}</h3>
+                    <p>Precio: $${producto.precio}</p>
+                    <label>Cantidad:</label>
+                    <input type="number" min="1" value="${producto.cantidad}" data-id="${producto.id}" class="cantidad-producto">
+                    <p>Total: $${producto.precio * producto.cantidad}</p>
+                    <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
+                </div>
+            `;
+            carritoContainer.innerHTML += productoHTML;
+        });
+
+        // Eventos para cambiar la cantidad
+        document.querySelectorAll(".cantidad-producto").forEach(input => {
+            input.addEventListener("change", (e) => {
+                const id = parseInt(e.target.dataset.id);
+                const nuevaCantidad = parseInt(e.target.value);
+                actualizarCantidad(id, nuevaCantidad);
             });
         });
 
-        // Actualiza el contador del carrito al cargar
+        // Eventos para eliminar productos
+        document.querySelectorAll(".btn-eliminar").forEach(boton => {
+            boton.addEventListener("click", (e) => {
+                const id = parseInt(e.target.dataset.id);
+                eliminarDelCarrito(id);
+            });
+        });
+    };
+
+    // Actualizar la cantidad de un producto en el carrito
+    const actualizarCantidad = (id, nuevaCantidad) => {
+        const producto = carrito.find(p => p.id === id);
+        if (producto) {
+            producto.cantidad = nuevaCantidad;
+            actualizarCarrito();
+            mostrarCarrito();
+        }
+    };
+
+    // Eliminar un producto del carrito
+    const eliminarDelCarrito = (id) => {
+        carrito = carrito.filter(producto => producto.id !== id);
         actualizarCarrito();
-    } catch (error) {
-        console.error("Error al obtener los datos:", error);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productosContainer = document.getElementById("productos-container");
-
-    // Actualizar el contador del carrito
-    const actualizarContadorCarrito = () => {
-        const contador = document.getElementById("carrito-count");
-        if (contador) {
-            contador.textContent = carrito.length;
-        }
+        mostrarCarrito();
     };
 
-    // Añadir producto al carrito
-    const añadirAlCarrito = (producto) => {
-        carrito.push(producto);
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        alert(`Producto "${producto.nombre}" añadido al carrito`);
-        actualizarContadorCarrito();
-    };
-
-    // Lista de productos
-    const productos = [
-        { id: 1, nombre: "Producto 1", precio: 100, imagen: "url_imagen1.jpg" },
-        { id: 2, nombre: "Producto 2", precio: 200, imagen: "url_imagen2.jpg" },
-        { id: 3, nombre: "Producto 3", precio: 300, imagen: "url_imagen3.jpg" },
-    ];
-
-    // Renderizar productos
-    productos.forEach((producto) => {
-        const productoHTML = `
-            <div class="producto">
-                <img src="${producto.imagen}" alt="${producto.nombre}">
-                <h2>${producto.nombre}</h2>
-                <p>Precio: $${producto.precio}</p>
-                <button class="btn-add-carrito" data-id="${producto.id}">Comprar</button>
-            </div>
-        `;
-        productosContainer.innerHTML += productoHTML;
-    });
-
-    // Asignar eventos a los botones
-    productosContainer.addEventListener("click", (e) => {
-        if (e.target.classList.contains("btn-add-carrito")) {
-            const id = e.target.getAttribute("data-id");
-            const producto = productos.find((prod) => prod.id == id);
-            if (producto) {
-                añadirAlCarrito(producto);
-            }
-        }
-    });
-
-    // Inicializar contador del carrito
-    actualizarContadorCarrito();
+    // Inicializar carrito en el DOM
+    mostrarCarrito();
 });
-
-function mostrarCarrito() {
-    const carritoContainer = document.getElementById('carrito-container');
-    carritoContainer.innerHTML = ''; // Limpia el contenido anterior
-
-    carrito.forEach(producto => {
-        const productoHTML = `
-            <div class="producto">
-                <h3>${producto.nombre}</h3>
-                <p>Precio: $${producto.precio}</p>
-                <label>Cantidad:</label>
-                <input type="number" min="1" value="${producto.cantidad}" data-id="${producto.id}" class="cantidad-producto">
-                <p>Total: $${producto.precio * producto.cantidad}</p>
-                <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
-            </div>
-        `;
-        carritoContainer.innerHTML += productoHTML;
-    });
-
-    // Eventos para cambiar la cantidad
-    const inputsCantidad = document.querySelectorAll('.cantidad-producto');
-    inputsCantidad.forEach(input => {
-        input.addEventListener('change', (e) => {
-            const idProducto = e.target.dataset.id;
-            const nuevaCantidad = parseInt(e.target.value);
-            actualizarCantidad(idProducto, nuevaCantidad);
-        });
-    });
-
-    // Eventos para eliminar productos
-    const botonesEliminar = document.querySelectorAll('.btn-eliminar');
-    botonesEliminar.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            const idProducto = e.target.dataset.id;
-            eliminarDelCarrito(idProducto);
-        });
-    });
-}
-
-function actualizarCantidad(idProducto, nuevaCantidad) {
-    const producto = carrito.find(p => p.id === idProducto);
-    if (producto) {
-        producto.cantidad = nuevaCantidad; // Actualiza la cantidad
-        localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito actualizado
-        mostrarCarrito(); // Actualiza el DOM
-    }
-}
-
-function eliminarDelCarrito(idProducto) {
-    carrito = carrito.filter(producto => producto.id !== idProducto); // Filtra el producto
-    localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito actualizado
-    mostrarCarrito(); // Actualiza el DOM
-}
-
-function agregarAlCarrito(producto) {
-    const productoExistente = carrito.find(p => p.id === producto.id);
-    if (productoExistente) {
-        productoExistente.cantidad += 1; // Incrementa la cantidad
-    } else {
-        producto.cantidad = 1; // Establece la cantidad inicial
-        carrito.push(producto); // Agrega el producto al carrito
-    }
-    localStorage.setItem('carrito', JSON.stringify(carrito)); // Guarda el carrito
-    mostrarCarrito(); // Actualiza el DOM
-}

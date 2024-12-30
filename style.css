@@ -92,7 +92,7 @@ main {
 
 .producto-img {
     width: 100%;
-    height: auto;
+    height: 200px;
     border-radius: 8px;
     margin-bottom: 15px;
 }
